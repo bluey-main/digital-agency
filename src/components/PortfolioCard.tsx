@@ -18,7 +18,7 @@ interface PortfolioCardProps {
 const PortfolioCard: React.FC<PortfolioCardProps> = ({ item }) => {
   return (
     <motion.div
-      variants={scaleUp}
+      variants={scaleUp(0.7, 1.2)}
       whileHover={hoverEffect}
       className="bg-white bg-white rounded-lg shadow-lg overflow-hidden group cursor-pointer"
       onClick={() => item.link && window.open(item.link, '_blank')}

@@ -8,7 +8,6 @@ import ServicesSection from '../components/ServicesSection';
 function HomePage() {
 
     // Replace with your actual WhatsApp number and desired pre-filled message
-  const myBusinessWhatsAppNumber = "+2349135857870"; // Example: CountryCode + Number without '+' or spaces
   const prefilledMessage = "Hello! I'm interested in your digital agency services.";
   return (
     <>
