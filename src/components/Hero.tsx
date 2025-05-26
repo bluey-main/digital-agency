@@ -318,7 +318,7 @@ function Hero() {
               </StatCard>
             </motion.div>
 
-            <div className="md:col-span-1 relative flex flex-col items-center justify-end order-first md:order-none min-h-[300px] md:min-h-[450px] lg:min-h-[500px]">
+            <div className="md:col-span-1 relative  hidden sm:flex flex-col items-center justify-end order-first md:order-none min-h-[300px] md:min-h-[450px] lg:min-h-[500px]">
               <AnimatedWrapper
                 variants={fadeIn(1, 0.2)}
                 className="h-full w-full flex justify-center items-end"
