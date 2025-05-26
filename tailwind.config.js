@@ -8,9 +8,9 @@ export default {
    extend: {
       colors: {
         'brand-pink': '#FCE8E8', // Example light pink
-        'brand-dark': '#1A1A1A', // For text and dark UI elements
-        'brand-accent': '#FFC700', // Example accent, adjust as needed
-        'brand-card-bg': '#0D0D0D', // Dark background for the cards
+        'brand-dark': '#161b29', // For text and dark UI elements
+        'brand-accent': '#ff5040', // Example accent, adjust as needed
+        'brand-card-bg': '#051424', // Dark background for the cards
         'brand-card-text': '#FFFFFF',
         'brand-tag-bg': '#FFFFFF',
         'brand-tag-text': '#1A1A1A',

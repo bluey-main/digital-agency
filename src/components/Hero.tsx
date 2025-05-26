@@ -90,7 +90,7 @@ const ClientCard: React.FC = () => (
         +2{" "}
       </div>
     </div>
-    <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-brand-pink opacity-10 rounded-full transform rotate-45"></div>
+    <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-white opacity-50 rounded-full transform rotate-45"></div>
   </div>
 );
 
@@ -148,8 +148,8 @@ const ProgressRing: React.FC<{ percentage: number }> = ({ percentage }) => {
             x2="100%"
             y2="100%"
           >
-            <stop offset="0%" stopColor="#FFD700" />
-            <stop offset="100%" stopColor="#FFA500" />
+            <stop offset="0%" stopColor="#ff5040" />
+            <stop offset="100%" stopColor="#ff5040" />
           </linearGradient>
         </defs>
       </svg>
@@ -193,7 +193,7 @@ const CircularText: React.FC = () => (
         <text fontSize="8.5" letterSpacing="1.45" fill="currentColor" dy="-1">
           {" "}
           {/* dy for slight vertical adjustment */}
-          <textPath href="#circlePathHeroUnique" startOffset="0%">
+          <textPath href="#circlePathHeroUnique" startOffset="0%" className="text-bran sm:text-brand-dark">
             • CHAT WITH US NOW • CHAT WITH US NOW !!!!
           </textPath>
         </text>
@@ -218,7 +218,7 @@ function Hero() {
   const whatsappUrl = `https://wa.me/${cleanPhoneNumber}?text=${encodedMessage}`;
 
   return (
-    <section className="relative bg-brand-pink min-h-screen overflow-hidden pt-28 md:pt-32 pb-10">
+    <section id="home" className="relative bg-[#f3f5f7] min-h-screen overflow-hidden pt-28 md:pt-32 pb-10">
       <div className="container mx-auto px-4 flex flex-col justify-center items-center relative z-10 h-full">
         <AnimatedWrapper
           variants={staggerContainer(0.2, 0.2)} // Stagger children of this block
@@ -245,7 +245,7 @@ function Hero() {
               // animate="visible"
               aria-label={animatedWord}
               style={{ display: "inline-block", whiteSpace: "pre" }} // whiteSpace: 'pre' to preserve space if word is at start/end
-              className="mx-1 sm:mx-2" // Add a little space around the animated word
+              className="mx-1 sm:mx-2 text-[#ff5040]" // Add a little space around the animated word
             >
               {animatedWord.split("").map((char, index) => (
                 <motion.span

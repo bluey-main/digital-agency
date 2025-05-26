@@ -52,12 +52,12 @@ const ServiceItem: React.FC<{ item: ServiceListItem; isActive: boolean; onHover:
         <motion.div
           className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-300 ease-out
                         ${isActive 
-                            ? 'bg-brand-lime-green text-brand-dark-text scale-110 shadow-lg' 
+                            ? 'bg-brand-accent text-brand-dark-text scale-110 shadow-lg' 
                             : 'bg-transparent text-brand-dark-text group-hover:bg-gray-100'
                         }`}
           whileHover={{ scale: isActive ? 1.1 : 1.05 }} // Keep scale if active, else slight scale
         >
-          <FiArrowUpRight size={20} className="sm:w-5 sm:h-5 transition-transform duration-300 group-hover:rotate-45" />
+          <FiArrowUpRight size={20} className="sm:w-5 sm:h-5 transition-transform duration-300 group-hover:rotate-45 group-hover:text-white" />
         </motion.div>
       </div>
     </motion.div>

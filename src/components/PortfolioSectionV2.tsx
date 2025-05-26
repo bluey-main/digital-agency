@@ -137,7 +137,7 @@ function PortfolioSectionV2() {
           <button
             onClick={() => scroll("right")}
             aria-label="Scroll right"
-            className="absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 bg-white/80 hover:bg-white rounded-full shadow-lg opacity-0 group-hover:opacity-100 focus:opacity-100 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-lime-green"
+            className="absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 bg-white/80 hover:bg-white rounded-full shadow-lg opacity-0 group-hover:opacity-100 focus:opacity-100 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-accent"
           >
             <FiChevronRight size={24} className="text-brand-dark-text" />
           </button>

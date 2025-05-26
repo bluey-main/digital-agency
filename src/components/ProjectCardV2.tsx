@@ -67,7 +67,7 @@ const ProjectCardV2: React.FC<ProjectCardV2Props> = ({ item }) => {
       {hasLink && (
         <motion.div
           className="absolute bottom-4 right-4 w-10 h-10 sm:w-12 sm:h-12 
-                     bg-brand-lime-green text-brand-dark-text 
+                     bg-brand-accent text-white
                      rounded-full flex items-center justify-center 
                      shadow-lg transform transition-all duration-300 
                      opacity-0 group-hover:opacity-100 group-hover:scale-110 group-hover:rotate-12"

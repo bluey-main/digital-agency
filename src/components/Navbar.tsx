@@ -13,9 +13,9 @@ const scrollToSection = (id: string) => {
 };
 
 const navLinks = [
-  { name: 'Home', to: '/', isSection: false },
-  { name: 'Services', to: 'services', isSection: true },
+  { name: 'Home', to: 'home', isSection: true },
   { name: 'Portfolio', to: 'portfolio', isSection: true },
+  { name: 'Services', to: 'services', isSection: true },
   { name: 'Contact', to: 'contact', isSection: true },
 ];
 
