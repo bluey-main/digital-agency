@@ -68,6 +68,6 @@ export const tapEffect = {
   scale: 0.95
 };
 
-export const myBusinessWhatsAppNumber = "+2349135857870"
+export const myBusinessWhatsAppNumber = "+2348076131828"
 
 export const prefilledWhatsappMessage = "Hello! I'm interested in your digital agency services.";

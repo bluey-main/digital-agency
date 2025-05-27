@@ -205,13 +205,66 @@ const CircularText: React.FC = () => (
   </div>
 );
 
+// Helper component for an animated word
+interface AnimatedWordProps {
+  text: string;
+  delay?: number; // Optional delay for this word's animation start
+  containerVariants?: any;
+  letterVariants?: any;
+  className?: string;
+}
+const AnimatedWord: React.FC<AnimatedWordProps> = ({
+  text,
+  delay = 0,
+  containerVariants = letterContainerVariants,
+  letterVariants = letterEnterVariant,
+  className = ''
+}) => {
+  // Adjust delayChildren in containerVariants if a specific delay is passed
+  const effectiveContainerVariants = {
+    ...containerVariants,
+    visible: {
+      ...containerVariants.visible,
+      transition: {
+        ...containerVariants.visible?.transition,
+        delayChildren: (containerVariants.visible?.transition?.delayChildren || 0) + delay,
+      },
+    },
+  };
+
+  return (
+    <motion.span
+      variants={effectiveContainerVariants}
+      initial="hidden" // Will be triggered by parent AnimatedWrapper or Hero's main stagger
+      animate="visible"
+      aria-label={text}
+      style={{ display: 'inline-block' }}
+      className={className}
+    >
+      {text.split("").map((char, index) => (
+        <motion.span
+          key={`${text}-${char}-${index}`}
+          variants={letterVariants}
+          style={{ display: 'inline-block' }}
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </motion.span>
+  );
+};
+
+
 // --- Main Hero Component ---
 function Hero() {
-  const headlineText = "Smart Digital Agency For Your Business To Succeed";
-  const animatedWord = "Digital"; // The word to animate
-  const wordIndex = headlineText.indexOf(animatedWord);
-  const beforeText = headlineText.substring(0, wordIndex);
-  const afterText = headlineText.substring(wordIndex + animatedWord.length);
+// No need to split the full headline string in this case
+  // We compose it with AnimatedWord components
+
+  // Calculate approximate delays for sequencing
+  const visionDelay = 0;
+  const sparkDelay = visionDelay + "Vision".length * 0.07 + 0.1; // Base letter stagger + small gap
+  const awesomeDelay = sparkDelay + "Spark".length * 0.07 + 0.1;
+  const afterAwesomeTextDelay = awesomeDelay + "Awesome".length * 0.07 + 0.1;
 
       const cleanPhoneNumber = myBusinessWhatsAppNumber.replace(/\D/g, '');
   const encodedMessage = encodeURIComponent(prefilledWhatsappMessage);
@@ -220,69 +273,31 @@ function Hero() {
   return (
     <section id="home" className="relative bg-[#f3f5f7] min-h-screen overflow-hidden pt-28 md:pt-32 pb-10">
       <div className="container mx-auto px-4 flex flex-col justify-center items-center relative z-10 h-full">
-        <AnimatedWrapper
-          variants={staggerContainer(0.2, 0.2)} // Stagger children of this block
+
+          <AnimatedWrapper
+          variants={staggerContainer(0.2, 0.1)} // This will stagger H1 and P
           className="w-full flex flex-col justify-center items-center px-9 sm:px-0 lg:max-w-3xl text-left mb-12 md:mb-16 mt-10 md:mt-0"
         >
-          <motion.h1 // This h1 will be part of the parent stagger, but "Digital" will have its own
-            // We don't apply variants directly here if children handle it, or apply a container variant
+          <motion.h1 // The H1 itself can have an overall entry animation if needed
+            // variants={fadeInUp(0.7)} // Or let its children handle it primarily
             className="font-display text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-brand-dark leading-tight mb-6"
           >
-            {/* Part before "Digital" */}
-            {beforeText && (
-              <motion.span
-                variants={fadeInUp(0.7, 0)}
-                style={{ display: "inline" }}
-              >
-                {beforeText}
-              </motion.span>
-            )}
-
-            {/* Animated "Digital" word */}
-            <motion.span
-              variants={letterContainerVariants} // Staggers letters
-              // initial="hidden" // No need for initial/animate if parent AnimatedWrapper handles the "visible" trigger
-              // animate="visible"
-              aria-label={animatedWord}
-              style={{ display: "inline-block", whiteSpace: "pre" }} // whiteSpace: 'pre' to preserve space if word is at start/end
-              className="mx-1 sm:mx-2 text-[#ff5040]" // Add a little space around the animated word
-            >
-              {animatedWord.split("").map((char, index) => (
-                <motion.span
-                  key={`${char}-${index}`}
-                  variants={letterEnterVariant}
-                  style={{ display: "inline-block" }} // Crucial for individual letter transforms
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </motion.span>
-
-            {/* Part after "Digital" */}
-            {afterText && (
-              <motion.span
-                variants={fadeInUp(0.7, animatedWord.length * 0.07 + 0.2)} // Delay based on "Digital" animation
-                style={{ display: "inline" }}
-              >
-                {afterText}
-              </motion.span>
-            )}
+            <motion.span variants={fadeInUp(0.6, visionDelay)} style={{ display: 'inline' }}>Your </motion.span>
+            <AnimatedWord text="Vision" delay={visionDelay} className="mx-1 text-brand-accent" /> {/* Example styling */}
+            <motion.span variants={fadeInUp(0.6, sparkDelay)} style={{ display: 'inline' }}> + Our </motion.span>
+            <AnimatedWord text="Spark" delay={sparkDelay} className="mx-1 text-brand-accent" /> {/* Example styling */}
+            <motion.span variants={fadeInUp(0.6, awesomeDelay)} style={{ display: 'inline' }}><br className="inline-block sm:hidden"/> = <br className="inline-block sm:hidden"/> Something </motion.span>
+            <AnimatedWord text="Awesome." delay={awesomeDelay} className="mx-1 text-green-500" /> {/* Example styling */}
           </motion.h1>
 
           <motion.p
-            variants={fadeInUp(
-              0.7,
-              0.1 +
-                (beforeText.length + animatedWord.length + afterText.length > 0
-                  ? animatedWord.length * 0.07 + 0.3
-                  : 0.1)
-            )} // Adjust delay
+            variants={fadeInUp(0.7, afterAwesomeTextDelay + 0.2)} // Delay based on H1 animation
             className="text-base text-center sm:text-2xl text-black max-w-lg"
           >
-            Agency that builds many amazing products to boost your business to
-            the next level.
+           Partner with us to launch amazing products and scale your success.
           </motion.p>
         </AnimatedWrapper>
+       
 
         <AnimatedWrapper
           variants={scaleUp(0.8, 0.8)} // Adjusted delay
@@ -298,7 +313,7 @@ function Hero() {
       </a>
         </AnimatedWrapper>
 
-        <AnimatedWrapper
+        {/* <AnimatedWrapper
           variants={staggerContainer(0.3, 1.0)} // Adjusted delay
           className="relative w-full mt-0 md:mt-0" // Adjusted margin
         >
@@ -368,7 +383,7 @@ function Hero() {
               </motion.div>
             </AnimatedWrapper>
           </div>
-        </AnimatedWrapper>
+        </AnimatedWrapper> */}
       </div>
 
       <AnimatedWrapper

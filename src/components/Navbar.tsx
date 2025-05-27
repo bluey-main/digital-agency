@@ -95,7 +95,7 @@ function Navbar() {
                         ${isScrolled || isMobileMenuOpen ? 'text-primary' : 'text-brand-dark hover:text-brand-accent'}`}
             onClick={() => isHomePage ? scrollToSection('hero-section', () => setIsMobileMenuOpen(false)) : setIsMobileMenuOpen(false)}
         >
-          Agency<span className={`${isScrolled || isMobileMenuOpen ? 'text-accent' : 'text-brand-accent'}`}>.</span>
+          BehindTheDesks<span className={`${isScrolled || isMobileMenuOpen ? 'text-accent' : 'text-brand-accent'}`}>.</span>
         </RouterLink>
 
         {/* Desktop Navigation */}
@@ -108,8 +108,8 @@ function Navbar() {
                 variants={linkVariants}
                 whileHover="hover"
                 whileTap="tap"
-                className={`font-medium transition-colors duration-200 text-sm lg:text-base 
-                            ${isScrolled || isMobileMenuOpen ? 'hover:text-primary' : 'hover:text-gray-300'}`}
+                className={`font-medium transition-colors duration-200 text-sm text-brand-dark lg:text-base 
+                            ${isScrolled || isMobileMenuOpen ? 'hover:text-brand-accent' : 'hover:text-brand-accent'}`}
               >
                 {link.name}
               </motion.button>
@@ -125,7 +125,7 @@ function Navbar() {
                     whileHover="hover"
                     whileTap="tap"
                     className={`font-medium transition-colors duration-200 text-sm lg:text-base 
-                                ${isScrolled || isMobileMenuOpen ? 'hover:text-primary' : 'hover:text-gray-300'}`}
+                                ${isScrolled || isMobileMenuOpen ? 'hover:text-brand-accent' : 'hover:text-brand-accent'}`}
                   >
                     {link.name}
                   </motion.span>
@@ -139,7 +139,7 @@ function Navbar() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`focus:outline-none p-1 rounded 
-                        ${isScrolled || isMobileMenuOpen ? 'text-primary hover:text-purple-700' : 'text-brand-dark hover:text-brand-accent'}`}
+                        ${isScrolled || isMobileMenuOpen ? 'text-primary hover:text-brand-accent' : 'text-brand-dark hover:text-brand-accent'}`}
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
           >

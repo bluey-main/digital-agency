@@ -81,7 +81,7 @@ function Footer() {
                 READY TO WORK WITH US?
               </h2>
               <p className="text-base sm:text-lg max-w-xl mx-auto lg:mx-0">
-                Partner with our design agency for your business with amazing
+                Partner with our digital agency for your business with amazing
                 results.
               </p>
             </motion.div>
@@ -141,9 +141,9 @@ function Footer() {
 
         {/* Copyright */}
         <div className="text-center text-xs pt-8 border-t border-footer-divider">
-          <p>DIGIMON, Inc.</p>
+          <p>BehindTheDesks.</p>
           <p className="mt-1">
-            Copyright © {new Date().getFullYear()} DIGIMON. All rights reserved.
+            Copyright © {new Date().getFullYear()} BehindTheDesks. All rights reserved.
           </p>
         </div>
       </div>

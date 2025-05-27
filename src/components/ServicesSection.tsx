@@ -24,10 +24,10 @@ interface ServiceListItem {
 }
 
 const servicesList: ServiceListItem[] = [
-  { id: 'web', number: '01', title: 'Web Design', description: 'Make the appearance of website pages so that they look so beautiful and pleasing to the eye.' },
-  { id: 'uiux', number: '02', title: 'UI/UX Design', description: 'Defines the experience that users will have when interacting with the company, its services, and its products.' },
-  { id: 'brand', number: '03', title: 'Brand Design', description: 'Help design all branding according to the business realm. Designers design designs that accurately reflect the products being marketed.' },
-  { id: 'graphic', number: '04', title: 'Graphic Design', description: 'A graphic designer creates work for publishers, print and electronic media, such as brochures and advertisements.' },
+  { id: 'web', number: '01', title: 'Web Design', description: 'We craft stunning, user-friendly websites that captivate your audience and convert visitors into loyal customers, seamlessly on any device.' },
+  { id: 'uiux', number: '02',  title:" UI/UX Design", description: "We design experiences so smooth, your users won't just like your product, they will love it. Happy users, happy you!"},
+  { id: 'brand', number: '03', title: 'Brand Design', description: "Your brand's first impression, supercharged. We create identities that aren't just seen, they're felt and remembered." },
+  { id: 'graphic', number: '04', title: 'Graphic Design', description: 'Need visuals that pop? We design everything from snazzy logos to share-worthy social graphics that tell your story, beautifully.' },
   // Add more if needed
 ];
 
