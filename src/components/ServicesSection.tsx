@@ -24,32 +24,36 @@ interface ServiceListItem {
 }
 
 const servicesList: ServiceListItem[] = [
-  { id: 'web', number: '01', title: 'Web Design', description: 'We craft stunning, user-friendly websites that captivate your audience and convert visitors into loyal customers, seamlessly on any device.' },
+  { id: 'web', number: '01', title: 'Web Design & Development', description: 'We craft stunning, user-friendly websites that captivate your audience and convert visitors into loyal customers, seamlessly on any device.' },
   { id: 'uiux', number: '02',  title:" UI/UX Design", description: "We design experiences so smooth, your users won't just like your product, they will love it. Happy users, happy you!"},
   { id: 'brand', number: '03', title: 'Brand Design', description: "Your brand's first impression, supercharged. We create identities that aren't just seen, they're felt and remembered." },
   { id: 'graphic', number: '04', title: 'Graphic Design', description: 'Need visuals that pop? We design everything from snazzy logos to share-worthy social graphics that tell your story, beautifully.' },
-  // Add more if needed
+  { id: 'IT', number: '05', title: 'IT Consultation', description: 'Think of us as your IT whisperers. We listen to your tech troubles and conjure up solutions that just work.' },
+  { id: 'SecurityAudits', number: '06', title: 'Security Audits', description: 'Know where you stand. Our security audits give you a clear picture of your defenses and how to make them even stronger.' },
+  { id: 'ITtranings', number: '07', title: 'IT Tranings', description: "IT training that doesn't feel like homework! We make learning new tech skills engaging, understandable, and actually enjoyable." },
+  // Add more if neede
 ];
 
 const ServiceItem: React.FC<{ item: ServiceListItem; isActive: boolean; onHover: () => void }> = ({ item, isActive, onHover }) => {
   return (
+    <AnimatedWrapper variants={fadeInUp(0.6)} className=''>
     <motion.div
       variants={fadeIn(0.5, 0.1)} // Each item fades in from right
-      className="py-6 border-b border-brand-border last:border-b-0 cursor-pointer group"
+      className="py-6 border-b flex-1  border-brand-border last:border-b-0 cursor-pointer group"
       onMouseEnter={onHover}
     //   onMouseLeave={onMouseLeave} // if you want to reset active state on leave
     >
-      <div className="flex justify-between items-center">
+      <div className="flex flex-1 bg-red-5 justify-between items-center">
         <div className="flex items-start">
-          <span className="text-sm font-semibold text-brand-light-text mr-4 pt-1">{item.number}</span>
+          <span className="text-sm font-semibold text-brand-accent mr-4 pt-1">{item.number}</span>
           <div>
-            <h3 className={`text-xl sm:text-2xl font-semibold text-brand-dark-text group-hover:text-primary transition-colors duration-300 ${isActive ? 'text-primary' : ''}`}>
+            <h3 className={`text-xl sm:text-2xl font-bold text-brand-dark-text group-hover:text-primary transition-colors duration-300 ${isActive ? 'text-primary' : ''}`}>
               {item.title}
             </h3>
-            <p className="text-sm text-brand-light-text mt-1 max-w-md">{item.description}</p>
+            <p className="text-sm text-brand-dark-text mt-1 max-w-md">{item.description}</p>
           </div>
         </div>
-        <motion.div
+        {/* <motion.div
           className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-300 ease-out
                         ${isActive 
                             ? 'bg-brand-accent text-brand-dark-text scale-110 shadow-lg' 
@@ -58,9 +62,10 @@ const ServiceItem: React.FC<{ item: ServiceListItem; isActive: boolean; onHover:
           whileHover={{ scale: isActive ? 1.1 : 1.05 }} // Keep scale if active, else slight scale
         >
           <FiArrowUpRight size={20} className="sm:w-5 sm:h-5 transition-transform duration-300 group-hover:rotate-45 group-hover:text-white" />
-        </motion.div>
+        </motion.div> */}
       </div>
     </motion.div>
+    </AnimatedWrapper>
   );
 };
 
@@ -93,45 +98,11 @@ function ServicesSection() {
         </AnimatedWrapper>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
+        <div className=" gap-12 md:gap-16 items-center">
           {/* Left Column: Image Mockups */}
-          <AnimatedWrapper variants={fadeInUp(0.8, 0.2)} className="relative h-[400px] sm:h-[500px] md:h-[600px]">
-            {/* Base Image (furthest back) */}
-            <motion.div
-              className="absolute w-[70%] rounded-2xl h-[70%] top-[15%] left-0 bg-brand-card-mockup-bg rounded-2.5xl shadow-xl overflow-hidden transform -rotate-6"
-              initial={{ x: -30, opacity: 0, rotate: -10 }}
-              animate={{ x: 0, opacity: 1, rotate: -6 }}
-              transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
-            >
-              <img src={mockupImg3} alt="Service Mockup 3" className="w-full h-full object-cover object-top" />
-            </motion.div>
-            {/* Middle Image */}
-            <motion.div
-              className="absolute w-[75%] rounded-2xl h-[75%] top-[5%] left-[15%] bg-brand-card-mockup-bg rounded-2.5xl shadow-2xl overflow-hidden transform rotate-3 z-10"
-              initial={{ y: 30, opacity: 0, rotate: 8 }}
-              animate={{ y: 0, opacity: 1, rotate: 3 }}
-              transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            >
-              <img src={mockupImg2} alt="Service Mockup 2" className="w-full h-full object-cover object-top" />
-            </motion.div>
-            {/* Top Image (most prominent) */}
-            <motion.div
-              className="absolute w-[80%] rounded-2xl h-[80%] top-[10%] left-[10%] bg-brand-card-mockup-bg rounded-2.5xl shadow-2xl overflow-hidden transform -rotate-2 z-20 group"
-              initial={{ scale: 0.8, opacity: 0, rotate: -5 }}
-              animate={{ scale: 1, opacity: 1, rotate: -2 }}
-              transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0 }}
-              whileHover={{ scale: 1.02, rotate: -1, y: -5 }}
-            >
-              <img src={mockupImg1} alt="Service Mockup 1" className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-102" />
-              {/* Optional overlay text on image hover */}
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <p className="text-white text-lg font-semibold">View All Cases</p>
-              </div>
-            </motion.div>
-          </AnimatedWrapper>
-
+  
           {/* Right Column: Services List */}
-          <AnimatedWrapper variants={staggerContainer(0.15, 0.3)} className="flex flex-col">
+          <AnimatedWrapper variants={staggerContainer(0.15, 0.3)} className="flex flex-row gap-x-12 flex-wrap">
             {servicesList.map((service) => (
               <ServiceItem
                 key={service.id}
